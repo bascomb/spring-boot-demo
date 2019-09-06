@@ -1,5 +1,7 @@
 package com.bascomb;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
@@ -21,6 +23,12 @@ public class App
         SpringApplicationBuilder sb = new SpringApplicationBuilder(App.class);
         sb.web(WebApplicationType.NONE);
         ConfigurableApplicationContext context = sb.run(args);
-        System.out.println();
+        printArguments(context);
+    }
+
+    @Autowired
+    private static void printArguments(ConfigurableApplicationContext context) {
+        ApplicationArguments args = context.getBean(ApplicationArguments.class);
+        System.out.println(args.getSourceArgs()[0]);
     }
 }
