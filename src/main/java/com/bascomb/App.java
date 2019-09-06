@@ -11,7 +11,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
- * Hello world!
+ * Demo Spring Features by
+ * Print Messages from varied sources.
  *
  */
 @SpringBootApplication
@@ -26,9 +27,9 @@ public class App
         printArguments(context);
     }
 
-    @Autowired
     private static void printArguments(ConfigurableApplicationContext context) {
         ApplicationArguments args = context.getBean(ApplicationArguments.class);
-        System.out.println(args.getSourceArgs()[0]);
+        System.out.println("Print from Application Args" + args.getSourceArgs()[0]);
+        System.out.println("Print from Property");
     }
 }
